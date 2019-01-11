@@ -28,5 +28,7 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@aws-cdk/aws-s3": "^0.22.0"
+  }
 }
