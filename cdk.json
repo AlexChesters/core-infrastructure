@@ -1,3 +1,10 @@
 {
-  "app": "node build/index.js"
+  "app": "node build/index.js",
+  "context": {
+    "availability-zones:account=008356366354:region=eu-west-1": [
+      "eu-west-1a",
+      "eu-west-1b",
+      "eu-west-1c"
+    ]
+  }
 }
