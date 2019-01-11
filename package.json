@@ -1,0 +1,30 @@
+{
+  "name": "core-infrastructure",
+  "version": "0.0.0",
+  "description": "core infrastructure for my personal AWS account",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc --project tsconfig.json -w",
+    "build": "tsc --project tsconfig.json",
+    "lint": "tslint --project tsconfig.json --config tslint.json cdk/**/*.ts",
+    "test": "npm run lint",
+    "cdk": "cdk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexChesters/core-infrastructure.git"
+  },
+  "author": "Alex Chesters <alex@cheste.rs>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexChesters/core-infrastructure/issues"
+  },
+  "homepage": "https://github.com/AlexChesters/core-infrastructure#readme",
+  "devDependencies": {
+    "@types/node": "^8.9.4",
+    "aws-cdk": "^0.21.0",
+    "tslint": "^5.12.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.1.2"
+  }
+}
