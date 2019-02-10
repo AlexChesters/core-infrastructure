@@ -1,8 +1,8 @@
 import * as s3 from '@aws-cdk/aws-s3'
 import * as cdk from '@aws-cdk/cdk'
 
-export default (parent: cdk.Construct) => {
-  new s3.Bucket(parent, 'BuildArtifactsBucket', {
+export default (parent: cdk.Construct): s3.Bucket => {
+  return new s3.Bucket(parent, 'BuildArtifactsBucket', {
     lifecycleRules: [
       {
         abortIncompleteMultipartUploadAfterDays: 1,

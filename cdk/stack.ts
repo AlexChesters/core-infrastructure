@@ -14,11 +14,17 @@ export default class Stack extends cdk.Stack {
 
     Budget(this)
     const certificate = Certificate(this)
-    Storage(this)
+    const bucket = Storage(this)
     const vpc = VPC(this)
 
     if (!opts.disableRouter) {
       Router(this, vpc, certificate)
     }
+
+    new cdk.Output(this, 'BuildArtifactsBucketOutput', {
+      description: 'S3 bucket to use for CI artifacts',
+      export: `${this.stackName}-build-artifacts-bucket`,
+      value: bucket.bucketName
+    })
   }
 }
