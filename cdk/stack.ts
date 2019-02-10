@@ -6,8 +6,10 @@ import Router from './resources/router'
 import Storage from './resources/storage'
 import VPC from './resources/vpc'
 
+import { ICoreInfrastructureOptions } from './types'
+
 export default class Stack extends cdk.Stack {
-  constructor (parent: cdk.App, name: string, props?: cdk.StackProps) {
+  constructor (parent: cdk.App, name: string, props?: cdk.StackProps, opts: ICoreInfrastructureOptions = {}) {
     super(parent, name, props)
 
     Budget(this)
@@ -15,6 +17,8 @@ export default class Stack extends cdk.Stack {
     Storage(this)
     const vpc = VPC(this)
 
-    Router(this, vpc, certificate)
+    if (!opts.disableRouter) {
+      Router(this, vpc, certificate)
+    }
   }
 }
