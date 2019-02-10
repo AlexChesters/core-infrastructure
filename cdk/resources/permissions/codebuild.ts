@@ -2,9 +2,7 @@ import * as iam from '@aws-cdk/aws-iam'
 import * as s3 from '@aws-cdk/aws-s3'
 import * as cdk from '@aws-cdk/cdk'
 
-import { ICustomRoles } from '../types'
-
-export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket): ICustomRoles => {
+export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket): iam.Role => {
   const role = new iam.Role(parent, 'CodeBuildBaseRole', {
     assumedBy: new iam.ServicePrincipal('codebuild.amazonaws.com')
   })
@@ -62,7 +60,5 @@ export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket): ICustom
     ]
   })
 
-  return {
-    codeBuildBaseRole: role
-  }
+  return role
 }
