@@ -15,4 +15,9 @@ export interface ICustomRoles {
    * function
    */
   codeBuildBaseRole: iam.Role
+  /**
+   * IAM Role that provides basic permissions necessary for AWS CodePipeline to
+   * function
+   */
+  codePipelineBaseRole: iam.Role
 }

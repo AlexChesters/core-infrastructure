@@ -2,6 +2,9 @@ import * as iam from '@aws-cdk/aws-iam'
 import * as s3 from '@aws-cdk/aws-s3'
 import * as cdk from '@aws-cdk/cdk'
 
+import buildArtifactsBucketStatement from '../statements/build-artifacts-bucket-statement'
+import kmsStatement from '../statements/kms'
+
 export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket): iam.Role => {
   const role = new iam.Role(parent, 'CodeBuildBaseRole', {
     assumedBy: new iam.ServicePrincipal('codebuild.amazonaws.com')
@@ -29,34 +32,14 @@ export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket): iam.Rol
     .addAllResources()
     .allow()
 
-  const kmsStatement = new iam
-    .PolicyStatement()
-    .addAction('kms:*')
-    .addAllResources()
-    .allow()
-
-  const s3Statement = new iam
-    .PolicyStatement()
-    .addActions(
-      's3:Get*',
-      's3:List*',
-      's3:PutObject',
-      's3:PutObjectAcl', 's3:DeleteObject'
-    )
-    .addResources(
-      `${buildArtifactsBucket.bucketArn}/*`,
-      buildArtifactsBucket.bucketArn
-    )
-    .allow()
-
-  new iam.Policy(parent, 'CloudWatchLogsPolicy', {
+  new iam.Policy(parent, 'CodeBuildBasePolicy', {
     roles: [role],
     statements: [
       cloudWatchLogsStatement,
       cloudFormationStatement,
       identityStatement,
-      kmsStatement,
-      s3Statement
+      kmsStatement(),
+      buildArtifactsBucketStatement(buildArtifactsBucket)
     ]
   })
 

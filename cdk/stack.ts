@@ -16,7 +16,7 @@ export default class Stack extends cdk.Stack {
     Budget(this)
     const certificate = Certificate(this)
     const bucket = Storage(this)
-    const { codeBuildBaseRole } = Permissions(this, bucket)
+    const permissions = Permissions(this, bucket)
     const vpc = VPC(this)
 
     if (!opts.disableRouter) {
@@ -32,7 +32,13 @@ export default class Stack extends cdk.Stack {
     new cdk.Output(this, 'CodeBuildBaseRoleOutput', {
       description: 'ARN of an IAM Role that provides basic permissions necessary for AWS CodeBuild to function',
       export: `${this.stackName}-codebuild-base-role-arn`,
-      value: codeBuildBaseRole.roleArn
+      value: permissions.codeBuildBaseRole.roleArn
+    })
+
+    new cdk.Output(this, 'CodePipelineBaseRoleOutput', {
+      description: 'ARN of an IAM Role that provides basic permissions necessary for AWS CodePipeline to function',
+      export: `${this.stackName}-codepipeline-base-role-arn`,
+      value: permissions.codePipelineBaseRole.roleArn
     })
   }
 }
