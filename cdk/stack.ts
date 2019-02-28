@@ -35,6 +35,12 @@ export default class Stack extends cdk.Stack {
       value: permissions.codeBuildBaseRole.roleArn
     })
 
+    new cdk.Output(this, 'CodeBuildBasePolicyOutput', {
+      description: 'ARN of an IAM Policy that provides basic permissions necessary for AWS CodeBuild to function',
+      export: `${this.stackName}-codebuild-base-policy-arn`,
+      value: permissions.codeBuildBasePolicy.managedPolicyArn
+    })
+
     new cdk.Output(this, 'CodePipelineBaseRoleOutput', {
       description: 'ARN of an IAM Role that provides basic permissions necessary for AWS CodePipeline to function',
       export: `${this.stackName}-codepipeline-base-role-arn`,

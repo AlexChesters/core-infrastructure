@@ -16,6 +16,11 @@ export interface ICustomRoles {
    */
   codeBuildBaseRole: iam.Role
   /**
+   * IAM Policy that provides basic permissions necessary for AWS CodeBuild to
+   * function
+   */
+  codeBuildBasePolicy: iam.CfnManagedPolicy
+  /**
    * IAM Role that provides basic permissions necessary for AWS CodePipeline to
    * function
    */
