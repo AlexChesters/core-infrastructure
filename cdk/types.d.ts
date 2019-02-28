@@ -26,6 +26,11 @@ export interface ICustomRoles {
    */
   codePipelineBaseRole: iam.Role
   /**
+   * IAM Policy that provides basic permissions necessary for AWS CodePipeline to
+   * function
+   */
+  codePipelineBasePolicy: iam.CfnManagedPolicy
+  /**
    * IAM Role that provides the permissions CloudFormation has when running as
    * part of a CodePipeline
    */
