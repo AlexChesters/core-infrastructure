@@ -2,7 +2,7 @@ import * as s3 from '@aws-cdk/aws-s3'
 import * as cdk from '@aws-cdk/cdk'
 
 import codeBuildRole from './roles/codebuild-base-role'
-import codePipelineRole from './roles/codepipeline-base-role'
+import codePipelineRole from './roles/codepipeline-execution-role'
 
 import { ICustomRoles } from '../../types'
 
