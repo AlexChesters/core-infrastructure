@@ -20,4 +20,9 @@ export interface ICustomRoles {
    * function
    */
   codePipelineBaseRole: iam.Role
+  /**
+   * IAM Role that provides the permissions CloudFormation has when running as
+   * part of a CodePipeline
+   */
+  codePipelineCloudFormationRole: iam.Role
 }

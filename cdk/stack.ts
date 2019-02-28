@@ -40,5 +40,11 @@ export default class Stack extends cdk.Stack {
       export: `${this.stackName}-codepipeline-base-role-arn`,
       value: permissions.codePipelineBaseRole.roleArn
     })
+
+    new cdk.Output(this, 'CodePipelineCloudFormationRoleOutput', {
+      description: 'ARN of an IAM Role that provides the permissions CloudFormation has when running as part of a CodePipeline',
+      export: `${this.stackName}-codepipeline-cloudformation-role-arn`,
+      value: permissions.codePipelineCloudFormationRole.roleArn
+    })
   }
 }
