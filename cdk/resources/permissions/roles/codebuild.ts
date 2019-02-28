@@ -2,45 +2,86 @@ import * as iam from '@aws-cdk/aws-iam'
 import * as s3 from '@aws-cdk/aws-s3'
 import * as cdk from '@aws-cdk/cdk'
 
-import buildArtifactsBucketStatement from '../statements/build-artifacts-bucket-statement'
-import kmsStatement from '../statements/kms'
-
 export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket): iam.Role => {
   const role = new iam.Role(parent, 'CodeBuildBaseRole', {
     assumedBy: new iam.ServicePrincipal('codebuild.amazonaws.com')
   })
 
-  const cloudWatchLogsStatement = new iam
-    .PolicyStatement()
-    .addActions(
-      'logs:CreateLogGroup',
-      'logs:CreateLogStream',
-      'logs:PutLogEvents'
-    )
-    .addAllResources()
-    .allow()
-
-  const cloudFormationStatement = new iam
-    .PolicyStatement()
-    .addAction('cloudformation:ValidateTemplate')
-    .addAllResources()
-    .allow()
-
-  const identityStatement = new iam
-    .PolicyStatement()
-    .addActions('sts:AssumeRole', 'iam:GetUser')
-    .addAllResources()
-    .allow()
-
-  new iam.Policy(parent, 'CodeBuildBasePolicy', {
-    roles: [role],
-    statements: [
-      cloudWatchLogsStatement,
-      cloudFormationStatement,
-      identityStatement,
-      kmsStatement(),
-      buildArtifactsBucketStatement(buildArtifactsBucket)
-    ]
+  new iam.CfnManagedPolicy(parent, 'CodeBuildBaseManagedPolicy', {
+    policyDocument: {
+      Statement: [
+        {
+          Action: [
+            'cloudformation:ValidateTemplate'
+          ],
+          Effect: 'Allow',
+          Resource: [
+            '*'
+          ],
+          Sid: 'CloudformationStatement'
+        },
+        {
+          Action: [
+            'logs:CreateLogGroup',
+            'logs:CreateLogStream',
+            'logs:PutLogEvents'
+          ],
+          Effect: 'Allow',
+          Resource: [
+            '*'
+          ],
+          Sid: 'CloudWatchLogsStatement'
+        },
+        {
+          Action: [
+            'sts:AssumeRole',
+            'iam:GetUser'
+          ],
+          Effect: 'Allow',
+          Resource: [
+            '*'
+          ],
+          Sid: 'IAMStatement'
+        },
+        {
+          Action: [
+            'ssm:GetParameters'
+          ],
+          Effect: 'Allow',
+          Resource: [
+            '*'
+          ],
+          Sid: 'SSMStatement'
+        },
+        {
+          Action: [
+            'kms:*'
+          ],
+          Effect: 'Allow',
+          Resource: [
+            '*'
+          ],
+          Sid: 'KMSStatement'
+        },
+        {
+          Action: [
+            's3:Get*',
+            's3:List*',
+            's3:PutObject',
+            's3:PutObjectAcl',
+            's3:DeleteObject'
+          ],
+          Effect: 'Allow',
+          Resource: [
+            `${buildArtifactsBucket.bucketArn}/*`,
+            buildArtifactsBucket.bucketArn
+          ],
+          Sid: 'S3Statement'
+        }
+      ],
+      Version: '2012-10-17'
+    },
+    roles: [role.roleName]
   })
 
   return role
