@@ -9,8 +9,8 @@ export default (parent: cdk.Construct): s3.Bucket => {
         id: 'abort-incomplete-multipart-uploads-after-1-day'
       },
       {
-        expirationInDays: 7,
-        id: 'expire-all-objects-after-7-days'
+        expirationInDays: 1,
+        id: 'expire-all-objects-after-1-day'
       }
     ]
   })
