@@ -5,9 +5,7 @@ class Application extends cdk.App {
   constructor () {
     super()
 
-    new Stack(this, 'core-infrastructure', undefined, {
-      disableRouter: true
-    })
+    new Stack(this, 'core-infrastructure')
   }
 }
 
