@@ -9,7 +9,7 @@ import codePipelineCloudFormationRole from './roles/codepipeline-cloudformation-
 import codePipelinePolicy from './policies/codepipeline-base-policy'
 import codePipelineRole from './roles/codepipeline-execution-role'
 
-import { ICustomRoles } from '../../types'
+import { ICustomRoles } from '../../../../types'
 
 export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket): ICustomRoles => {
   const codeBuildBaseRole = codeBuildRole(parent)
