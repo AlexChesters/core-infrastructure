@@ -16,7 +16,12 @@ class Application extends cdk.App {
         buildArtifactsBucketArn: 'arn:aws:s3:::core-infrastructure-eu-w-buildartifactsbucketeuwe-12d2acmozch84'
       }
     )
-    new CoreUSEast1Stack(this, 'core-infrastructure-us-east-1')
+    new CoreUSEast1Stack(this, 'core-infrastructure-us-east-1',
+      {
+        env: {
+          region: 'us-east-1'
+        }
+      })
   }
 }
 
