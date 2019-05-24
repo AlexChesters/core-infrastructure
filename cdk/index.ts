@@ -14,7 +14,8 @@ class Application extends cdk.App {
       'core-infrastructure-global',
       {
         buildArtifactsBucketArns: [
-          'arn:aws:s3:::core-infrastructure-eu-w-buildartifactsbucketeuwe-12d2acmozch84'
+          'arn:aws:s3:::core-infrastructure-eu-w-buildartifactsbucketeuwe-12d2acmozch84',
+          'arn:aws:s3:::core-infrastructure-us-e-buildartifactsbucketusea-cmkndmg3ty11'
         ]
       }
     )
