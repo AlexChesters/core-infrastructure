@@ -2,9 +2,9 @@ import * as iam from '@aws-cdk/aws-iam'
 
 export interface IGlobalStackProps {
   /**
-   * S3 bucket ARN for build artifacts
+   * S3 bucket ARNs for build artifacts
    */
-  buildArtifactsBucketArn: string
+  buildArtifactsBucketArns: string[]
 }
 
 export interface ICustomRoles {

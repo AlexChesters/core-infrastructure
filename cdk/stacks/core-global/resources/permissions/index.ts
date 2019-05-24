@@ -10,7 +10,7 @@ import codePipelineRole from './roles/codepipeline-execution-role'
 
 import { ICustomRoles } from '../../../../types'
 
-export default (parent: cdk.Construct, buildArtifactsBucket: string): ICustomRoles => {
+export default (parent: cdk.Construct, buildArtifactsBucket: string[]): ICustomRoles => {
   const codeBuildBaseRole = codeBuildRole(parent)
   const codePipelineBaseRole = codePipelineRole(parent)
   return {

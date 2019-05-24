@@ -1,7 +1,14 @@
 import * as iam from '@aws-cdk/aws-iam'
 import * as cdk from '@aws-cdk/cdk'
 
-export default (parent: cdk.Construct, buildArtifactsBucketArn: string, role: iam.Role): iam.CfnManagedPolicy => {
+export default (parent: cdk.Construct, buildArtifactsBucketArns: string[], role: iam.Role): iam.CfnManagedPolicy => {
+  const bucketResources: string[] = []
+
+  buildArtifactsBucketArns.forEach((arn) => {
+    bucketResources.push(`${arn}/*`)
+    bucketResources.push(arn)
+  })
+
   return new iam.CfnManagedPolicy(parent, 'CodeBuildBaseManagedPolicy', {
     policyDocument: {
       Statement: [
@@ -67,10 +74,7 @@ export default (parent: cdk.Construct, buildArtifactsBucketArn: string, role: ia
             's3:DeleteObject'
           ],
           Effect: 'Allow',
-          Resource: [
-            `${buildArtifactsBucketArn}/*`,
-            buildArtifactsBucketArn
-          ],
+          Resource: bucketResources,
           Sid: 'S3Statement'
         }
       ],

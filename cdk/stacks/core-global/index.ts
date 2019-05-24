@@ -12,7 +12,7 @@ export default class Stack extends cdk.Stack {
     Budget(this)
     const permissions = Permissions(
       this,
-      globalStackProps.buildArtifactsBucketArn
+      globalStackProps.buildArtifactsBucketArns
     )
 
     new cdk.Output(this, 'CodeBuildBaseRoleOutput', {
