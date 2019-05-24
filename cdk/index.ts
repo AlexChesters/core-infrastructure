@@ -8,7 +8,13 @@ class Application extends cdk.App {
     super()
 
     new CoreEUWest1Stack(this, 'core-infrastructure-eu-west-1')
-    new CoreGlobalStack(this, 'core-infrastructure-global')
+    new CoreGlobalStack(
+      this,
+      'core-infrastructure-global',
+      {
+        buildArtifactsBucketArn: 'arn:aws:s3:::core-infrastructure-eu-w-buildartifactsbucketeuwe-12d2acmozch84'
+      }
+    )
   }
 }
 

@@ -1,5 +1,12 @@
 import * as iam from '@aws-cdk/aws-iam'
 
+export interface IGlobalStackProps {
+  /**
+   * S3 bucket ARN for build artifacts
+   */
+  buildArtifactsBucketArn: string
+}
+
 export interface ICustomRoles {
   /**
    * IAM Role that provides basic permissions necessary for AWS CodeBuild to

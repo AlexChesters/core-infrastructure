@@ -1,8 +1,7 @@
 import * as iam from '@aws-cdk/aws-iam'
-import * as s3 from '@aws-cdk/aws-s3'
 import * as cdk from '@aws-cdk/cdk'
 
-export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket, role: iam.Role): iam.CfnManagedPolicy => {
+export default (parent: cdk.Construct, buildArtifactsBucketArn: string, role: iam.Role): iam.CfnManagedPolicy => {
   return new iam.CfnManagedPolicy(parent, 'CodeBuildBaseManagedPolicy', {
     policyDocument: {
       Statement: [
@@ -69,8 +68,8 @@ export default (parent: cdk.Construct, buildArtifactsBucket: s3.Bucket, role: ia
           ],
           Effect: 'Allow',
           Resource: [
-            `${buildArtifactsBucket.bucketArn}/*`,
-            buildArtifactsBucket.bucketArn
+            `${buildArtifactsBucketArn}/*`,
+            buildArtifactsBucketArn
           ],
           Sid: 'S3Statement'
         }

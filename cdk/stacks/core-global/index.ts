@@ -3,14 +3,17 @@ import * as cdk from '@aws-cdk/cdk'
 import Budget from './resources/budget'
 import Permissions from './resources/permissions'
 
-import BuildArtifactsBucketEUWest1 from '../core-eu-west-1/resources/storage'
+import { IGlobalStackProps } from '../../types'
 
 export default class Stack extends cdk.Stack {
-  constructor (parent: cdk.App, name: string, props?: cdk.StackProps) {
+  constructor (parent: cdk.App, name: string, globalStackProps: IGlobalStackProps, props?: cdk.StackProps) {
     super(parent, name, props)
 
     Budget(this)
-    const permissions = Permissions(this, BuildArtifactsBucketEUWest1(this))
+    const permissions = Permissions(
+      this,
+      globalStackProps.buildArtifactsBucketArn
+    )
 
     new cdk.Output(this, 'CodeBuildBaseRoleOutput', {
       description: 'ARN of an IAM Role that provides basic permissions necessary for AWS CodeBuild to function',
