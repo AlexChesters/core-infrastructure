@@ -9,6 +9,13 @@ class Application extends cdk.App {
     super()
 
     new CoreEUWest1Stack(this, 'core-infrastructure-eu-west-1')
+    new CoreUSEast1Stack(this, 'core-infrastructure-us-east-1',
+      {
+        env: {
+          region: 'us-east-1'
+        }
+      })
+
     new CoreGlobalStack(
       this,
       'core-infrastructure-global',
@@ -19,12 +26,6 @@ class Application extends cdk.App {
         ]
       }
     )
-    new CoreUSEast1Stack(this, 'core-infrastructure-us-east-1',
-      {
-        env: {
-          region: 'us-east-1'
-        }
-      })
   }
 }
 
