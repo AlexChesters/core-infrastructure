@@ -11,3 +11,9 @@ This project is made up of several CloudFormation stacks:
     * This stack contains core infrastructure for `eu-west-1`
 * [`core-us-east-1`](./cdk/stacks/core-us-east-1/index.ts)
     * This stack contains core infrastructure for `us-east-1`
+
+# How is it deployed?
+As the project contains prerequisites for running things such as CodePipeline
+and CodeBuild, there is no CI. Deployment is by running the following command:
+
+`npm run build && npm run cdk deploy`
