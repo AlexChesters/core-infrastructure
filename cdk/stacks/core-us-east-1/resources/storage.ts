@@ -6,11 +6,11 @@ export default (parent: cdk.Construct): s3.Bucket => {
     lifecycleRules: [
       {
         expiration: cdk.Duration.days(90),
-        id: 'abort-incomplete-multipart-uploads-after-1-day'
+        id: 'abort-incomplete-multipart-uploads-after-90-days'
       },
       {
         expiration: cdk.Duration.days(90),
-        id: 'expire-all-objects-after-1-day'
+        id: 'expire-all-objects-after-90-days'
       }
     ]
   })
