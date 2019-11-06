@@ -1,5 +1,5 @@
 import * as budgets from '@aws-cdk/aws-budgets'
-import * as cdk from '@aws-cdk/cdk'
+import * as cdk from '@aws-cdk/core'
 
 export default (parent: cdk.Construct) => {
   new budgets.CfnBudget(parent, 'MonthlyBudget', {

@@ -1,4 +1,4 @@
-import * as cdk from '@aws-cdk/cdk'
+import * as cdk from '@aws-cdk/core'
 
 import codeBuildPolicy from './policies/codebuild-base-policy'
 import codeBuildRole from './roles/codebuild-base-role'

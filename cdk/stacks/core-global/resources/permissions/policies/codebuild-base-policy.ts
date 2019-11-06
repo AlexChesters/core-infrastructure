@@ -1,5 +1,5 @@
 import * as iam from '@aws-cdk/aws-iam'
-import * as cdk from '@aws-cdk/cdk'
+import * as cdk from '@aws-cdk/core'
 
 export default (parent: cdk.Construct, buildArtifactsBucketArns: string[], role: iam.Role): iam.CfnManagedPolicy => {
   const bucketResources: string[] = []

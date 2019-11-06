@@ -1,11 +1,11 @@
-import * as cdk from '@aws-cdk/cdk'
+import * as cdk from '@aws-cdk/core'
 
 import CoreEUWest1Stack from './stacks/core-eu-west-1'
 import CoreGlobalStack from './stacks/core-global'
 import CoreUSEast1Stack from './stacks/core-us-east-1'
 
 class Application extends cdk.App {
-  constructor () {
+  constructor() {
     super()
 
     new CoreEUWest1Stack(this, 'core-infrastructure-eu-west-1')
@@ -29,4 +29,4 @@ class Application extends cdk.App {
   }
 }
 
-new Application().run()
+new Application().synth()
