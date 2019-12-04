@@ -21,5 +21,17 @@ export default class Stack extends cdk.Stack {
       exportName: `${this.stackName}-vpc-id`,
       value: vpc.vpcId
     })
+
+    new cdk.CfnOutput(this, 'PublicSubnetOneId', {
+      description: 'ID of public subnet one',
+      exportName: `${this.stackName}-public-subnet-one-id`,
+      value: vpc.publicSubnets[0].subnetId
+    })
+
+    new cdk.CfnOutput(this, 'PublicSubnetTwoId', {
+      description: 'ID of public subnet two',
+      exportName: `${this.stackName}-public-subnet-two-id`,
+      value: vpc.publicSubnets[1].subnetId
+    })
   }
 }
