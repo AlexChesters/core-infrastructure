@@ -10,8 +10,8 @@ export default (parent: cdk.Construct, executionRole: iam.Role): iam.Role => {
   })
 
   const adminStatement = new iam.PolicyStatement({
-    effect: iam.Effect.ALLOW,
     actions: ['*'],
+    effect: iam.Effect.ALLOW,
     resources: ['*']
   })
 

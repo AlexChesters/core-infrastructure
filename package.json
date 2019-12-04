@@ -8,7 +8,7 @@
     "build": "tsc --project tsconfig.json",
     "lint": "tslint --project tsconfig.json --config tslint.json cdk/**/*.ts",
     "test": "npm run lint",
-    "diff": "cdk deploy",
+    "diff": "cdk diff",
     "deploy": "cdk deploy core-infrastructure-eu-west-1 core-infrastructure-global core-infrastructure-us-east-1"
   },
   "repository": {

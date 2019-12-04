@@ -6,7 +6,7 @@ import Permissions from './resources/permissions'
 import { IGlobalStackProps } from '../../types'
 
 export default class Stack extends cdk.Stack {
-  constructor(parent: cdk.App, name: string, globalStackProps: IGlobalStackProps, props?: cdk.StackProps) {
+  constructor (parent: cdk.App, name: string, globalStackProps: IGlobalStackProps, props?: cdk.StackProps) {
     super(parent, name, props)
 
     Budget(this)
