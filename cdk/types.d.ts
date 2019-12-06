@@ -1,4 +1,5 @@
 import * as iam from '@aws-cdk/aws-iam'
+import * as acm from '@aws-cdk/aws-certificatemanager'
 
 export interface IGlobalStackProps {
   /**
@@ -33,4 +34,11 @@ export interface ICustomRoles {
    * part of a CodePipeline
    */
   codePipelineCloudFormationRole: iam.Role
+}
+
+export interface ICertificates {
+  /**
+   * ACM certificate for *.api.alexchesters.com
+   */
+  alexChestersApiCertificate: acm.Certificate
 }
