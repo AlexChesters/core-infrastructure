@@ -34,6 +34,11 @@ export interface ICustomRoles {
    * part of a CodePipeline
    */
   codePipelineCloudFormationRole: iam.Role
+  /**
+   * IAM Policy that provides the permissions necessary for Packer to be able
+   * to build an AMI
+   */
+  packerPolicy: iam.CfnManagedPolicy
 }
 
 export interface ICertificates {

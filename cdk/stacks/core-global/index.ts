@@ -44,5 +44,11 @@ export default class Stack extends cdk.Stack {
       exportName: `${this.stackName}-codepipeline-cloudformation-role-arn`,
       value: permissions.codePipelineCloudFormationRole.roleArn
     })
+
+    new cdk.CfnOutput(this, 'PackerPolicy', {
+      description: 'ARN of an IAM Policy that provides the permissions necessary for Packer to be able to build an AMI',
+      exportName: `${this.stackName}-packer-policy-arn`,
+      value: permissions.packerPolicy.ref
+    })
   }
 }

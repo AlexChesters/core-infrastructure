@@ -8,6 +8,8 @@ import codePipelineCloudFormationRole from './roles/codepipeline-cloudformation-
 import codePipelinePolicy from './policies/codepipeline-base-policy'
 import codePipelineRole from './roles/codepipeline-execution-role'
 
+import packerPolicy from './policies/packer-policy'
+
 import { ICustomRoles } from '../../../../types'
 
 export default (parent: cdk.Construct, buildArtifactsBucket: string[]): ICustomRoles => {
@@ -29,6 +31,7 @@ export default (parent: cdk.Construct, buildArtifactsBucket: string[]): ICustomR
     codePipelineCloudFormationRole: codePipelineCloudFormationRole(
       parent,
       codePipelineBaseRole
-    )
+    ),
+    packerPolicy: packerPolicy(parent)
   }
 }
