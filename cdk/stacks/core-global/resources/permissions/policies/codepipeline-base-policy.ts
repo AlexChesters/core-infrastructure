@@ -14,11 +14,7 @@ export default (parent: cdk.Construct, buildArtifactsBucketArns: string[], role:
       Statement: [
         {
           Action: [
-            'cloudformation:CreateChangeSet',
-            'cloudformation:DescribeChangeSet',
-            'cloudformation:ExecuteChangeSet',
-            'cloudformation:DeleteChangeSet',
-            'cloudformation:DescribeStacks'
+            'cloudformation:*'
           ],
           Effect: 'Allow',
           Resource: [
