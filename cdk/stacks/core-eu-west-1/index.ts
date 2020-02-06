@@ -12,7 +12,7 @@ export default class Stack extends cdk.Stack {
     const bucket = Storage(this)
     const vpc = VPC(this)
     const certificates = Certificates(this)
-    Topics(this)
+    const topics = Topics(this)
 
     new cdk.CfnOutput(this, 'BuildArtifactsBucketOutput', {
       description: 'S3 bucket to use for CI artifacts',
@@ -42,6 +42,12 @@ export default class Stack extends cdk.Stack {
       description: 'ARN of the ACM certificate for *.api.alexchesters.com',
       exportName: `${this.stackName}-alexchesters-api-certificate-arn`,
       value: certificates.alexChestersApiCertificate.certificateArn
+    })
+
+    new cdk.CfnOutput(this, 'AlarmTopicArn', {
+      description: 'The ARN of the SNS topic to send CloudWatch alarm notifications too',
+      exportName: `${this.stackName}-alarm-topic-arn`,
+      value: topics[0].topicArn
     })
   }
 }
