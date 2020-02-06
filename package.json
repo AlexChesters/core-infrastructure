@@ -22,19 +22,21 @@
   },
   "homepage": "https://github.com/AlexChesters/core-infrastructure#readme",
   "devDependencies": {
-    "tslint": "^5.20.0",
-    "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.6.4"
+    "tslint": "^6.0.0",
+    "tslint-config-standard": "^9.0.0",
+    "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@aws-cdk/aws-budgets": "^1.14.0",
-    "@aws-cdk/aws-certificatemanager": "^1.14.0",
-    "@aws-cdk/aws-ec2": "^1.14.0",
-    "@aws-cdk/aws-elasticloadbalancingv2": "^1.14.0",
-    "@aws-cdk/aws-iam": "^1.14.0",
-    "@aws-cdk/aws-route53": "^1.14.0",
-    "@aws-cdk/aws-s3": "^1.14.0",
-    "@types/node": "^12.11.5",
-    "aws-cdk": "^1.14.0"
+    "@aws-cdk/aws-budgets": "^1.22.0",
+    "@aws-cdk/aws-certificatemanager": "^1.22.0",
+    "@aws-cdk/aws-ec2": "^1.22.0",
+    "@aws-cdk/aws-elasticloadbalancingv2": "^1.22.0",
+    "@aws-cdk/aws-iam": "^1.22.0",
+    "@aws-cdk/aws-route53": "^1.22.0",
+    "@aws-cdk/aws-s3": "^1.22.0",
+    "@aws-cdk/aws-sns": "^1.22.0",
+    "@aws-cdk/aws-sns-subscriptions": "^1.22.0",
+    "@types/node": "^13.7.0",
+    "aws-cdk": "^1.22.0"
   }
 }

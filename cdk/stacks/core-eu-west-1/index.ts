@@ -3,6 +3,7 @@ import * as cdk from '@aws-cdk/core'
 import Storage from './resources/storage'
 import VPC from './resources/vpc'
 import Certificates from './resources/certificates'
+import Topics from './resources/topics'
 
 export default class Stack extends cdk.Stack {
   constructor (parent: cdk.App, name: string, props?: cdk.StackProps) {
@@ -11,6 +12,7 @@ export default class Stack extends cdk.Stack {
     const bucket = Storage(this)
     const vpc = VPC(this)
     const certificates = Certificates(this)
+    Topics(this)
 
     new cdk.CfnOutput(this, 'BuildArtifactsBucketOutput', {
       description: 'S3 bucket to use for CI artifacts',
