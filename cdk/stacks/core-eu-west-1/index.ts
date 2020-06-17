@@ -38,6 +38,12 @@ export default class Stack extends cdk.Stack {
       value: vpc.publicSubnets[1].subnetId
     })
 
+    new cdk.CfnOutput(this, 'SecurityGroupIdOutput', {
+      description: 'ID of the default security group',
+      exportName: `${this.stackName}-security-group-id`,
+      value: vpc.vpcDefaultSecurityGroup
+    })
+
     new cdk.CfnOutput(this, 'AlexChestersAPICertificateOutput', {
       description: 'ARN of the ACM certificate for *.api.alexchesters.com',
       exportName: `${this.stackName}-alexchesters-api-certificate-arn`,
