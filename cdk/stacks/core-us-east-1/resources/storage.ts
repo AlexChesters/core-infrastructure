@@ -5,12 +5,8 @@ export default (parent: cdk.Construct): s3.Bucket => {
   return new s3.Bucket(parent, 'BuildArtifactsBucketUSEast1', {
     lifecycleRules: [
       {
-        expiration: cdk.Duration.days(90),
+        abortIncompleteMultipartUploadAfter: cdk.Duration.days(90),
         id: 'abort-incomplete-multipart-uploads-after-90-days'
-      },
-      {
-        expiration: cdk.Duration.days(90),
-        id: 'expire-all-objects-after-90-days'
       }
     ]
   })
