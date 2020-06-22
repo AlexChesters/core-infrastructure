@@ -8,7 +8,7 @@ export interface IGlobalStackProps {
   buildArtifactsBucketArns: string[]
 }
 
-export interface ICustomPermissions {
+export interface ICustomRoles {
   /**
    * IAM Role that provides basic permissions necessary for AWS CodeBuild to
    * function
@@ -39,10 +39,6 @@ export interface ICustomPermissions {
    * to build an AMI
    */
   packerPolicy: iam.CfnManagedPolicy
-  /**
-   * IAM User that is used in GitHub Actions workflows
-   */
-  githubActionsUser: iam.User
 }
 
 export interface ICertificates {

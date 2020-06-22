@@ -10,11 +10,9 @@ import codePipelineRole from './roles/codepipeline-execution-role'
 
 import packerPolicy from './policies/packer-policy'
 
-import githubActionsUser from './users/github-actions-user'
+import { ICustomRoles } from '../../../../types'
 
-import { ICustomPermissions } from '../../../../types'
-
-export default (parent: cdk.Construct, buildArtifactsBucket: string[]): ICustomPermissions => {
+export default (parent: cdk.Construct, buildArtifactsBucket: string[]): ICustomRoles => {
   const codeBuildBaseRole = codeBuildRole(parent)
   const codePipelineBaseRole = codePipelineRole(parent)
   return {
@@ -34,7 +32,6 @@ export default (parent: cdk.Construct, buildArtifactsBucket: string[]): ICustomP
       parent,
       codePipelineBaseRole
     ),
-    packerPolicy: packerPolicy(parent),
-    githubActionsUser: githubActionsUser(parent)
+    packerPolicy: packerPolicy(parent)
   }
 }
