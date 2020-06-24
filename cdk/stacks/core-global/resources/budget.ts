@@ -6,7 +6,7 @@ export default (parent: cdk.Construct) => {
     budget: {
       budgetLimit: {
         amount: 25,
-        unit: 'GBP'
+        unit: 'USD'
       },
       budgetType: 'COST',
       timeUnit: 'MONTHLY'
