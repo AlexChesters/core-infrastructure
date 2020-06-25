@@ -1,5 +1,6 @@
 # core-infrastructure
-core infrastructure for my personal AWS account
+Resources for my personal AWS account that are shared between multiple different
+projects
 
 # What's in here?
 This project is made up of several CloudFormation stacks.
