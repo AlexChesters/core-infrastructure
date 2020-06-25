@@ -11,21 +11,21 @@ specific AWS region).
 * An AWS Budget set to $25, and an email notification to be sent if the
 forecasted cost exceeds 125% of that amount
 * IAM policies:
-    * CodeBuildBaseManagedPolicy - A policy containing the necessary permissions
+    * `CodeBuildBaseManagedPolicy` - A policy containing the necessary permissions
     that allow an AWS CodeBuild project to run
-    * CodePipelineBaseManagedPolicy - A policy containing the necessary
+    * `CodePipelineBaseManagedPolicy` - A policy containing the necessary
     permissions that allow an AWS CodePipeline pipeline to run
-    * CodePipelineCloudFormationPolicy - A policy that is assumed by any
+    * `CodePipelineCloudFormationPolicy` - A policy that is assumed by any
     pipeline in order to perform CloudFormation updates
-    * PackerManagedPolicy - A policy containing the necessary permissions to
+    * `PackerManagedPolicy` - A policy containing the necessary permissions to
     build an AMI using [Packer](https://www.packer.io/)
 * IAM roles:
-    * CodeBuildBaseRole - A role that has the CodeBuildBaseManagedPolicy
+    * `CodeBuildBaseRole` - A role that has the `CodeBuildBaseManagedPolicy`
     attached
-    * CodePipelineBaseRole - A role that has the CodePipelineBaseManagedPolicy
+    * `CodePipelineBaseRole` - A role that has the `CodePipelineBaseManagedPolicy`
     attached
-    * CodePipelineCloudFormationRole - A role that has the
-    CodePipelineCloudFormationPolicy attached
+    * `CodePipelineCloudFormationRole` - A role that has the
+    `CodePipelineCloudFormationPolicy` attached
 
 ## [`core-eu-west-1`](./cdk/stacks/core-eu-west-1/index.ts)
 This stack contains core infrastructure resources for the `eu-west-1` region
