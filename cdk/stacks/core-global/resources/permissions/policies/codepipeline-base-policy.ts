@@ -36,7 +36,9 @@ export default (parent: cdk.Construct, buildArtifactsBucketArns: string[], role:
         {
           Action: [
             'codebuild:StartBuild',
-            'codebuild:BatchGetBuilds'
+            'codebuild:BatchGetBuilds',
+            'codebuild:StartBuildBatch',
+            'codebuild:BatchGetBuildBatches'
           ],
           Effect: 'Allow',
           Resource: [

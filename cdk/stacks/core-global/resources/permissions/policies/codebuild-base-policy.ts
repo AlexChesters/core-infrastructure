@@ -76,6 +76,18 @@ export default (parent: cdk.Construct, buildArtifactsBucketArns: string[], role:
           Effect: 'Allow',
           Resource: bucketResources,
           Sid: 'S3Statement'
+        },
+        {
+          Action: [
+            'codebuild:CreateReportGroup',
+            'codebuild:CreateReport',
+            'codebuild:UpdateReport',
+            'codebuild:BatchPutTestCases',
+            'codebuild:StartBuild'
+          ],
+          Effect: 'Allow',
+          Resource: '*',
+          Sid: 'CodeBuildStatement'
         }
       ],
       Version: '2012-10-17'
