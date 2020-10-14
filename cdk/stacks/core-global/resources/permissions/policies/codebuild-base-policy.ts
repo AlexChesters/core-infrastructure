@@ -37,7 +37,9 @@ export default (parent: cdk.Construct, buildArtifactsBucketArns: string[], role:
         {
           Action: [
             'sts:AssumeRole',
-            'iam:GetUser'
+            'iam:GetUser',
+            'iam:GetInstanceProfile',
+            'iam:PassRole'
           ],
           Effect: 'Allow',
           Resource: [
