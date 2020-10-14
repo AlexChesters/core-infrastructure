@@ -41,9 +41,16 @@ export interface ICustomRoles {
   packerPolicy: iam.CfnManagedPolicy
 }
 
-export interface ICertificates {
+export interface IEuWest1Certificates {
   /**
    * ACM certificate for *.api.alexchesters.com
    */
   alexChestersApiCertificate: acm.Certificate
+}
+
+export interface IUsEast1Certificates {
+  /**
+   * ACM certificate for *.projects.alexchesters.com and *.test.projects.alexchesters.com
+   */
+  alexChestersProjectsCertificate: acm.Certificate
 }
