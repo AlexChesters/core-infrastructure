@@ -5,7 +5,7 @@ export default (parent: cdk.Construct) => {
   new budgets.CfnBudget(parent, 'MonthlyBudget', {
     budget: {
       budgetLimit: {
-        amount: 25,
+        amount: 30,
         unit: 'USD'
       },
       budgetType: 'COST',
