@@ -4,6 +4,7 @@ import Storage from './resources/storage'
 import VPC from './resources/vpc'
 import Certificates from './resources/certificates'
 import Topics from './resources/topics'
+import CodeStarConnection from './resources/codestar-connection'
 
 export default class Stack extends cdk.Stack {
   constructor (parent: cdk.App, name: string, props?: cdk.StackProps) {
@@ -13,6 +14,7 @@ export default class Stack extends cdk.Stack {
     const vpc = VPC(this)
     const certificates = Certificates(this)
     const topics = Topics(this)
+    const connection = CodeStarConnection(this)
 
     new cdk.CfnOutput(this, 'BuildArtifactsBucketOutput', {
       description: 'S3 bucket to use for CI artifacts',
@@ -54,6 +56,12 @@ export default class Stack extends cdk.Stack {
       description: 'The ARN of the SNS topic to send CloudWatch alarm notifications too',
       exportName: `${this.stackName}-alarm-topic-arn`,
       value: topics[0].topicArn
+    })
+
+    new cdk.CfnOutput(this, 'CodeStarConnectionArn', {
+      description: 'The ARN of the CodeStar connection to GitHub',
+      exportName: `${this.stackName}-codestar-github-connection-arn`,
+      value: connection.attrConnectionArn
     })
   }
 }
