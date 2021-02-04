@@ -39,11 +39,15 @@ stored
     * 2 public subnets
 * An ACM certificate for `*.api.alexchesters.com`
 * An SNS topic where CloudWatch alarms can be sent too
+* A CodeStar connection to my GitHub account
 
 ## [`core-us-east-1`](./cdk/stacks/core-us-east-1/index.ts)
 This stack contains core infrastructure resources for the `us-east-1` region
+
 * An S3 bucket where build artifacts from AWS CodeBuild and AWS CodePipeline are
 stored
+* An ACM certificate for `*.projects.alexchesters.com` and
+`*.test.projects.alexchesters.com`
 
 # How is it deployed?
 By a GitHub action workflow defined in
