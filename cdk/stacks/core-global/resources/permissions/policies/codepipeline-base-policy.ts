@@ -67,6 +67,16 @@ export default (parent: cdk.Construct, buildArtifactsBucketArns: string[], role:
           Effect: 'Allow',
           Resource: bucketResources,
           Sid: 'S3Statement'
+        },
+        {
+          Action: [
+            'codestar-connections:UseConnection'
+          ],
+          Effect: 'Allow',
+          Resource: [
+            '*'
+          ],
+          Sid: 'CodeStarConnectionStatement'
         }
       ],
       Version: '2012-10-17'
