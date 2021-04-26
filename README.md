@@ -27,6 +27,8 @@ forecasted cost exceeds 125% of that amount
     attached
     * `CodePipelineCloudFormationRole` - A role that has the
     `CodePipelineCloudFormationPolicy` attached
+* IAM users:
+    * `GitHubActionsUser` - A user that is used to by GitHub Actions
 
 ## [`core-eu-west-1`](./cdk/stacks/core-eu-west-1/index.ts)
 This stack contains core infrastructure resources for the `eu-west-1` region
