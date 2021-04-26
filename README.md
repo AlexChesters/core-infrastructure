@@ -48,7 +48,3 @@ This stack contains core infrastructure resources for the `us-east-1` region
 stored
 * An ACM certificate for `*.projects.alexchesters.com` and
 `*.test.projects.alexchesters.com`
-
-# How is it deployed?
-By a GitHub action workflow defined in
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml)
