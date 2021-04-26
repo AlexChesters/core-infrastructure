@@ -39,6 +39,10 @@ export interface ICustomRoles {
    * to build an AMI
    */
   packerPolicy: iam.CfnManagedPolicy
+  /**
+   * An IAM user to be used by GitHub Actions
+   */
+  gitHubActionsUser: iam.User
 }
 
 export interface IEuWest1Certificates {
